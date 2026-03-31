@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko" class="theme-dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>댓츠원 마케팅 제안서</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>if(typeof Chart!=='undefined')Chart.defaults.animation=false;</script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html.theme-dark{--bg:#09090b;--sf:#18181b;--sfh:#27272a;--bd:rgba(255,255,255,.06);--tx:#fafafa;--tx2:#a1a1aa;--ac:#6366f1;--ac2:#8b5cf6;--pos:#10b981;--neg:#f43f5e;--warn:#f59e0b}
+html.theme-light{--bg:#fafafa;--sf:#fff;--sfh:#f4f4f5;--bd:rgba(0,0,0,.07);--tx:#09090b;--tx2:#71717a;--ac:#4f46e5;--ac2:#7c3aed;--pos:#059669;--neg:#e11d48;--warn:#d97706}
+body{font-family:'Noto Sans KR','Inter',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+h1,h2,h3{color:var(--tx);letter-spacing:-.02em;font-weight:700}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px 80px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:14px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.g2{grid-template-columns:1fr}}
+@media(max-width:700px){.g3{grid-template-columns:1fr}}
+@media(max-width:768px){.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.g4{grid-template-columns:1fr}}
+
+/* Tabs */
+.tab-bar{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--bd);padding:12px 0;margin-bottom:28px;backdrop-filter:blur(12px)}
+.tab-inner{max-width:820px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.tabs{display:flex;gap:4px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:3px}
+.tab-btn{padding:8px 20px;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;background:transparent;color:var(--tx2);transition:all .15s}
+.tab-btn.active{background:var(--ac);color:#fff}
+.tab-btn:hover:not(.active){background:var(--sfh);color:var(--tx)}
+.tab-logo{font-size:10px;font-weight:800;color:var(--ac);letter-spacing:.1em;display:flex;align-items:center;gap:5px}
+.tab-logo span{width:5px;height:5px;border-radius:50%;background:var(--ac)}
+.tab-page{display:none}.tab-page.active{display:block}
+
+/* Cover */
+.cover{text-align:center;padding:60px 20px 44px}
+.cover-tag{font-size:10px;font-weight:800;color:var(--ac);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:6px}
+.cdot{width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.cover h1{font-size:30px;letter-spacing:-.04em;margin-bottom:8px;line-height:1.15}
+.cover .sub{font-size:14px;color:var(--tx2);margin-bottom:20px;line-height:1.6}
+.cover .meta{display:inline-flex;gap:16px;font-size:12px;color:var(--tx2);border-top:1px solid var(--bd);padding-top:16px}
+
+/* Section */
+.sec{margin-bottom:28px}
+.sn{font-size:10px;font-weight:800;color:var(--ac);text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}
+.sec h2{font-size:19px;margin-bottom:12px}
+.sec>p{font-size:13px;color:var(--tx2);line-height:1.8;margin-bottom:14px}
+
+/* Card variants */
+.prob{border-left:3px solid var(--neg);padding:14px 18px}
+.prob h4{font-size:12px;font-weight:700;color:var(--neg);margin-bottom:3px}
+.prob p,.sol p,.pil p,.need p,.camp p{font-size:12px;color:var(--tx2);line-height:1.5}
+.sol{border-left:3px solid var(--pos);padding:14px 18px}
+.sol h4{font-size:12px;font-weight:700;color:var(--pos);margin-bottom:3px}
+.pil{border-left:3px solid var(--ac);padding:14px 18px}
+.pil h4{font-size:13px;font-weight:700;margin-bottom:3px}
+.pil .tag{font-size:10px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.pil ul{font-size:12px;color:var(--tx2);line-height:1.7;padding-left:16px;margin-top:4px}
+.need{border-left:3px solid var(--ac2);padding:14px 18px}
+.need h4{font-size:12px;font-weight:700;margin-bottom:3px}
+.need .why{font-size:10px;color:var(--ac);font-weight:600;margin-top:4px}
+.camp{padding:16px 18px}
+.camp-tag{font-size:10px;font-weight:700;color:var(--warn);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.camp h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.stat{text-align:center;padding:18px 14px}
+.stat-val{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-bottom:3px}
+.stat-label{font-size:11px;color:var(--tx2);line-height:1.4}
+.highlight{text-align:center;padding:16px;background:var(--sfh);border-radius:10px;margin-top:12px}
+.highlight p{font-size:13px;font-weight:600}
+.highlight em{color:var(--ac);font-style:normal}
+
+/* Timeline */
+.tl{position:relative;padding-left:24px}
+.tl::before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--bd)}
+.ti{position:relative;margin-bottom:18px}
+.ti::before{content:'';position:absolute;left:-21px;top:5px;width:10px;height:10px;border-radius:50%;border:2px solid var(--ac);background:var(--bg)}
+.tp{font-size:10px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.05em}
+.tt{font-size:14px;font-weight:700;margin:2px 0 3px}
+.td{font-size:12px;color:var(--tx2);line-height:1.6}
+.td strong{color:var(--tx)}
+
+/* Table */
+.ktbl{width:100%;border-collapse:collapse;font-size:12px}
+.ktbl th{text-align:left;padding:9px 12px;font-size:10px;font-weight:700;color:var(--tx2);border-bottom:2px solid var(--bd);text-transform:uppercase;letter-spacing:.05em}
+.ktbl td{padding:9px 12px;border-bottom:1px solid var(--bd)}
+.ktbl tr:last-child td{border-bottom:none}
+.r{text-align:right}.b{font-weight:700}
+
+/* CTA */
+.cta-box{text-align:center;padding:32px 20px;border:2px solid var(--ac);border-radius:14px;margin-top:20px}
+.cta-box h2{font-size:18px;margin-bottom:6px}
+.cta-box p{font-size:13px;color:var(--tx2)}
+.cta-box .hl{font-size:12px;color:var(--ac);font-weight:700;margin-top:10px}
+
+/* Dashboard specific */
+.kpi-card{position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.kpi-card.k1::before{background:var(--ac)}.kpi-card.k2::before{background:var(--pos)}.kpi-card.k3::before{background:var(--warn)}.kpi-card.k4::before{background:var(--ac2)}
+.kl{font-size:11px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.kv{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.km{display:flex;align-items:center;gap:8px;margin-top:8px}
+.bg{display:inline-flex;padding:2px 7px;border-radius:99px;font-size:10px;font-weight:700}
+.bg.u{background:rgba(16,185,129,.14);color:var(--pos)}
+.tg{font-size:10px;color:var(--tx2)}
+.cc{padding:18px}.cc h3{font-size:12px;font-weight:600;color:var(--tx2);margin-bottom:12px;text-transform:uppercase;letter-spacing:.04em}
+.cb{position:relative;width:100%;height:280px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:10px 12px;font-size:10px;font-weight:700;color:var(--tx2);border-bottom:2px solid var(--bd);text-transform:uppercase;letter-spacing:.06em}
+.tbl td{padding:11px 12px;border-bottom:1px solid var(--bd);font-variant-numeric:tabular-nums}
+.tbl tr:last-child td{border-bottom:none}.tbl tr:hover td{background:var(--sfh)}
+.dt{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.fn{display:flex;flex-direction:column;gap:8px}.fr{display:flex;align-items:center;gap:10px}
+.fl{width:55px;font-size:11px;font-weight:600;text-align:right;color:var(--tx2);flex-shrink:0}
+.ft{flex:1;height:30px;background:var(--sfh);border-radius:6px;overflow:hidden}
+.fb{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;min-width:50px}
+.fb span{font-size:11px;font-weight:700;color:#fff}
+.frt{width:40px;font-size:10px;color:var(--tx2);text-align:right;flex-shrink:0}
+.ins{border-left:3px solid var(--ac);padding:14px 18px;margin-top:14px}
+.ins h4{font-size:12px;margin-bottom:4px}
+.ins p{font-size:12px;color:var(--tx2);line-height:1.7}
+.dash-hdr h2{font-size:22px;margin-bottom:4px}
+.lv{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:var(--pos)}
+.ld{width:6px;height:6px;border-radius:50%;background:var(--pos);animation:pl 2s infinite}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+.st{font-size:15px;font-weight:700;margin:22px 0 12px}
+.ft2{text-align:center;margin-top:40px;font-size:10px;color:var(--tx2)}
+
+/* Menu */
+.mn{position:fixed;bottom:16px;right:16px;z-index:9999}
+.mt{width:38px;height:38px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.mt:hover{background:var(--sfh)}
+.md{position:absolute;bottom:46px;right:0;min-width:160px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:5px;opacity:0;visibility:hidden;transform:translateY(5px);transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.md.open{opacity:1;visibility:visible;transform:translateY(0)}
+.md button{width:100%;padding:7px 10px;border:none;border-radius:6px;background:0;color:var(--tx);font-size:12px;font-family:inherit;cursor:pointer;text-align:left;display:flex;align-items:center;gap:7px}
+.md button:hover{background:var(--sfh)}
+
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.an{animation:fu .4s ease-out both}
+.d1{animation-delay:.04s}.d2{animation-delay:.08s}.d3{animation-delay:.12s}.d4{animation-delay:.16s}.d5{animation-delay:.2s}.d6{animation-delay:.24s}.d7{animation-delay:.28s}.d8{animation-delay:.32s}
+
+@media print{body{background:#fff!important;color:#000!important}.mn,.tab-bar{display:none!important}.card{break-inside:avoid;box-shadow:none;border:1px solid #ddd}.an{animation:none!important}.tab-page{display:block!important}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+@page{margin:.55in;size:A4}
+</style>
+</head>
+<body>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+<div class="tab-inner">
+<div class="tab-logo"><span></span>THAT'S ONE</div>
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab('proposal')">📄 제안서</button>
+<button class="tab-btn" onclick="showTab('dashboard')">📊 대시보드</button>
+</div>
+</div>
+</div>
+
+<!-- Menu -->
+<div class="mn"><button class="mt" onclick="toggleMenu()"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg></button><div class="md" id="dd"><button onclick="cycleTheme()"><span id="ti">🌙</span><span id="tl">다크</span></button><button onclick="window.print()">🖨️ PDF 저장</button></div></div>
+
+<main id="main-content" role="main">
+
+<!-- ========== TAB 1: PROPOSAL ========== -->
+<div class="tab-page active" id="page-proposal">
+<div class="wrap">
+<section class="cover an"><div class="cover-tag"><span class="cdot"></span>MARKETING PROPOSAL</div><h1>댓츠원 마케팅 합류 제안서</h1><div class="sub">"인지도를 매출로 전환하는 구조를 만들고,<br>브랜드와 함께 성장하는 마케팅 체계를 구축하겠습니다"</div><div class="meta"><span>📄 제안자: 우석</span><span>📅 2026.04</span></div></section>
+
+<section class="sec an d1"><div class="sn">01</div><h2>현황 진단</h2><p>8개월 만에 연매출 20~30억. 대표님의 전문성과 콘텐츠 파워가 만든 성과입니다. 하지만 다음 단계로 가려면 보완이 필요한 영역이 있습니다.</p>
+<div class="g3"><div class="card prob"><h4>🔴 전환 동선 부재</h4><p>유튜브 → 상담까지 연결되는 파이프라인이 설계되어 있지 않음</p></div><div class="card prob"><h4>🔴 CRM & 데이터 없음</h4><p>리드 관리 체계 부재. 상담이 어디서 오는지 모르는 상태</p></div><div class="card prob"><h4>🔴 성장 채널 단일</h4><p>유튜브+입소문에만 의존. 퍼포먼스, 뉴스레터, 커뮤니티 채널 전무</p></div></div>
+<div class="highlight"><p>마케팅 없이 여기까지 왔다는 건 — <em>마케팅을 체계적으로 붙이면 다음 스테이지로 갈 수 있다</em>는 뜻입니다.</p></div></section>
+
+<section class="sec an d2"><div class="sn">02</div><h2>마케팅 비전 — 5개 축</h2><p>단순히 광고를 돌리는 게 아니라, 댓츠원의 전체 사업 구조에 맞는 마케팅 체계를 만들겠습니다.</p>
+<div class="card pil" style="margin-bottom:10px"><div class="tag">Pillar 1 — 퍼포먼스 & 리드</div><h4>상담 리드를 만드는 엔진</h4><p>네이버 SA, SEO, 콘텐츠 리퍼포징으로 상담 문의를 안정적으로 확보</p><ul><li>네이버 SA 핵심 키워드 운영 + CPA 최적화</li><li>유튜브 → 블로그 → 상담 전환 파이프라인</li><li>카카오 비즈니스 채널 상담 자동화</li></ul></div>
+<div class="card pil" style="margin-bottom:10px"><div class="tag">Pillar 2 — CRM & 리텐션</div><h4>한 번 온 고객을 놓치지 않는 구조</h4><p>고객 생애주기 전체 관리. 미계약 리마인드, 크로스셀, 리퍼럴.</p><ul><li>리드 CRM — 단계별 상태 관리</li><li>미계약 리드 자동 팔로업</li><li>기존 고객 → 스터디랩 크로스셀 / 리퍼럴 프로그램</li></ul></div>
+<div class="card pil" style="margin-bottom:10px"><div class="tag">Pillar 3 — 뉴스레터 & 콘텐츠 허브</div><h4>학부모가 매주 기다리는 입시 뉴스레터</h4><p>대표님의 전문성을 뉴스레터로 확장. 구독자 = 상담 예비 고객 DB.</p><ul><li>주 1회 발행 (입시 핵심 이슈 + 댓츠원 인사이트)</li><li>유튜브 1개 → 블로그 + 뉴스레터 + 인스타 + 숏폼 리퍼포징</li><li>무료 리소스(체크리스트/가이드) → 구독자 확보</li></ul></div>
+<div class="card pil" style="margin-bottom:10px"><div class="tag">Pillar 4 — AI 플랫폼 (ONE-IT) 론칭</div><h4>에듀테크 SaaS 론칭 전략</h4><p>컨설팅(B2C 고관여)과 다른 SaaS 마케팅. 기존 고객을 얼리어답터로.</p><ul><li>베타 테스트 → 후기 확보 → 론칭 캠페인</li><li>"AI가 분석한 입시 전략" 콘텐츠 바이럴</li><li>기존 구독자에게 우선 론칭 안내</li></ul></div>
+<div class="card pil"><div class="tag">Pillar 5 — 프랜차이즈 가맹 (B2B)</div><h4>스터디랩 전국 확장</h4><p>학부모(B2C)와 예비 점주(B2B)는 완전히 다른 마케팅. 별도 트랙.</p><ul><li>프랜차이즈 플랫폼 입점 + 가맹 전용 랜딩페이지</li><li>대치 본점 성과 데이터 = 가맹 모집 핵심 근거</li></ul></div></section>
+
+<section class="sec an d3"><div class="sn">03</div><h2>캠페인 기획 방향</h2><p>시즌별 캠페인을 미리 기획하고 체계적으로 집행합니다.</p>
+<div class="g2"><div class="card camp"><div class="camp-tag">3~6월</div><h4>🎯 수시 준비 캠페인</h4><p>생기부/세특 니즈 폭발. 뉴스레터로 체크리스트 배포 → 구독자 확보.</p></div><div class="card camp"><div class="camp-tag">6~9월</div><h4>📝 수시 원서 시즌</h4><p>원서/자소서/면접. "D-60 무료 상담" 긴급성 캠페인. 메타 리타겟팅.</p></div><div class="card camp"><div class="camp-tag">9~12월</div><h4>📊 정시 시즌</h4><p>수능 전략/배치. 유튜브 라이브 설명회 → 실시간 상담 연결.</p></div><div class="card camp"><div class="camp-tag">1~3월</div><h4>🔄 비수기 전환</h4><p>신학년 로드맵, 리퍼럴 캠페인, ONE-IT 론칭 적기.</p></div></div></section>
+
+<section class="sec an d4"><div class="sn">04</div><h2>90일 실행 로드맵</h2>
+<div class="card"><div class="tl">
+<div class="ti"><div class="tp">Month 1 — 기반 구축</div><div class="tt">측정 인프라 + CRM + 전환 동선</div><div class="td">GA4 · UTM · 리드 CRM · 카카오 채널 · CTA 개선 · 블로그 SEO · <strong>뉴스레터 1호</strong> · 성과물: 유입 분석 첫 리포트</div></div>
+<div class="ti"><div class="tp">Month 2~3 — 엔진 가동</div><div class="tt">퍼포먼스 + 리퍼포징 + CRM</div><div class="td">네이버 SA · 리퍼포징 체계 · 자동 상담/리마인드 · CPA 최적화 · <strong>목표: 월 30건+ 리드, 뉴스레터 500명</strong></div></div>
+<div class="ti"><div class="tp">Month 4~6 — 확장</div><div class="tt">스케일업 + 신규 트랙</div><div class="td">예산 확대 · 메타 리타겟팅 · 시즌 캠페인 · <strong>ONE-IT 론칭 기획</strong> · <strong>가맹 마케팅 시작</strong></div></div>
+</div></div></section>
+
+<section class="sec an d5"><div class="sn">05</div><h2>성과 측정</h2>
+<div class="card" style="padding:0;overflow:hidden"><table class="ktbl"><thead><tr><th>KPI</th><th class="r">1개월</th><th class="r">3개월</th><th class="r">6개월</th></tr></thead><tbody>
+<tr><td class="b">마케팅 리드</td><td class="r">측정 시작</td><td class="r b" style="color:var(--ac)">월 30건+</td><td class="r b" style="color:var(--ac)">월 60건+</td></tr>
+<tr><td class="b">CPA</td><td class="r">벤치마크</td><td class="r b" style="color:var(--pos)">10만원↓</td><td class="r b" style="color:var(--pos)">5~8만원</td></tr>
+<tr><td class="b">기여 매출</td><td class="r">축적</td><td class="r b">1,800만+</td><td class="r b">3,600만+</td></tr>
+<tr><td class="b">뉴스레터</td><td class="r">세팅</td><td class="r b" style="color:var(--warn)">500명</td><td class="r b" style="color:var(--warn)">2,000명+</td></tr>
+</tbody></table></div></section>
+
+<section class="sec an d6"><div class="sn">06</div><h2>함께 논의하고 싶은 것들</h2><p>위 계획을 실행하기 위해, 미팅에서 아래 사항들을 함께 맞춰보면 좋겠습니다.</p>
+<div class="card" style="padding:20px 24px"><div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--ac);font-weight:700;flex-shrink:0">01</span><div><span style="font-size:13px;font-weight:600">역할 범위 & 의사결정 구조</span><p style="font-size:12px;color:var(--tx2);margin-top:2px">마케팅 총괄로서의 업무 범위와 예산 운영 방식</p></div></div><div style="border-top:1px solid var(--bd)"></div>
+<div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--ac);font-weight:700;flex-shrink:0">02</span><div><span style="font-size:13px;font-weight:600">처우 및 보상 구조</span><p style="font-size:12px;color:var(--tx2);margin-top:2px">기본 보상과 성과에 따른 인센티브 방식</p></div></div><div style="border-top:1px solid var(--bd)"></div>
+<div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--ac);font-weight:700;flex-shrink:0">03</span><div><span style="font-size:13px;font-weight:600">근무 형태</span><p style="font-size:12px;color:var(--tx2);margin-top:2px">출근/재택 비율, 유연 근무 방식</p></div></div><div style="border-top:1px solid var(--bd)"></div>
+<div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--ac);font-weight:700;flex-shrink:0">04</span><div><span style="font-size:13px;font-weight:600">고용 형태 및 향후 계획</span><p style="font-size:12px;color:var(--tx2);margin-top:2px">법인 전환 시점에 맞춘 고용 구조</p></div></div><div style="border-top:1px solid var(--bd)"></div>
+<div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--ac);font-weight:700;flex-shrink:0">05</span><div><span style="font-size:13px;font-weight:600">업무 환경 및 장비</span><p style="font-size:12px;color:var(--tx2);margin-top:2px">재택 기반 업무를 위한 기본 인프라</p></div></div>
+</div></div><div style="margin-top:10px;padding:12px;font-size:12px;color:var(--tx2);text-align:center">세부 사항은 미팅에서 편하게 논의하면 좋겠습니다.</div></section>
+
+<section class="sec an d7"><div class="cta-box"><h2>함께 만들겠습니다</h2><p>퍼포먼스부터 CRM, 뉴스레터, AI 론칭, 프랜차이즈까지 —<br>댓츠원의 다음 스테이지를 위한 마케팅 체계를 구축하겠습니다.</p><div class="hl">📊 대시보드 탭에서 리포팅 프로토타입도 확인해보세요</div></div></section>
+</div>
+</div>
+
+<!-- ========== TAB 2: DASHBOARD ========== -->
+<div class="tab-page" id="page-dashboard">
+<div class="wrap" style="padding-top:28px">
+
+<section class="dash-hdr an"><h2>마케팅 대시보드 프로토타입</h2><div style="font-size:12px;color:var(--tx2);display:flex;align-items:center;gap:8px"><span>2026년 4월 예상 데이터</span><span class="lv"><span class="ld"></span>SAMPLE</span></div></section>
+
+<section class="g4 an d1" style="margin-top:16px;margin-bottom:16px">
+<div class="card kpi-card k1"><div class="kl">리드</div><div class="kv">47건</div><div class="km"><span class="bg u">▲18%</span><span class="tg">목표 30건</span></div></div>
+<div class="card kpi-card k2"><div class="kl">CPA</div><div class="kv" style="color:var(--pos)">6.4만</div><div class="km"><span class="bg u">▼36%</span><span class="tg">목표 10만</span></div></div>
+<div class="card kpi-card k3"><div class="kl">기여매출</div><div class="kv">2,820만</div><div class="km"><span class="bg u">▲24%</span><span class="tg">목표 1,800만</span></div></div>
+<div class="card kpi-card k4"><div class="kl">ROAS</div><div class="kv" style="color:var(--ac2)">940%</div><div class="km"><span class="bg u">▲156%p</span><span class="tg">목표 600%</span></div></div>
+</section>
+
+<h3 class="st an d2">리드 추이 & 채널 비중</h3>
+<section class="g2 an d2">
+<div class="card cc"><h3>주차별 리드 추이</h3><div class="cb"><canvas id="c1" role="img" aria-label="리드 추이"></canvas></div></div>
+<div class="card cc"><h3>채널별 리드 비중</h3><div class="cb"><canvas id="c2" role="img" aria-label="채널 비중"></canvas></div></div>
+</section>
+
+<h3 class="st an d3">CPA & 전환 퍼널</h3>
+<section class="g2 an d3">
+<div class="card cc"><h3>채널별 CPA (만원)</h3><div class="cb"><canvas id="c3" role="img" aria-label="CPA"></canvas></div></div>
+<div class="card cc"><h3>상담 → 계약 퍼널</h3><div class="fn" style="padding-top:8px">
+<div class="fr"><div class="fl">유입</div><div class="ft"><div class="fb" style="width:100%;background:var(--ac)"><span>1,240명</span></div></div><div class="frt"></div></div>
+<div class="fr"><div class="fl">문의</div><div class="ft"><div class="fb" style="width:42%;background:var(--ac2)"><span>47건</span></div></div><div class="frt">3.8%</div></div>
+<div class="fr"><div class="fl">상담</div><div class="ft"><div class="fb" style="width:34%;background:var(--warn)"><span>38건</span></div></div><div class="frt">80.9%</div></div>
+<div class="fr"><div class="fl">계약</div><div class="ft"><div class="fb" style="width:13%;background:var(--pos)"><span>14건</span></div></div><div class="frt">36.8%</div></div>
+</div></div></section>
+
+<h3 class="st an d4">채널별 상세</h3>
+<section class="card an d4" style="padding:0;overflow-x:auto">
+<table class="tbl"><thead><tr><th>채널</th><th class="r">리드</th><th class="r">비용</th><th class="r">CPA</th><th class="r">계약</th><th class="r">매출</th><th class="r">ROAS</th></tr></thead><tbody>
+<tr><td><span class="dt" style="background:#6366f1"></span>네이버 SA</td><td class="r">18</td><td class="r">180만</td><td class="r">10.0만</td><td class="r">6</td><td class="r">1,200만</td><td class="r b" style="color:var(--pos)">667%</td></tr>
+<tr><td><span class="dt" style="background:#10b981"></span>블로그 SEO</td><td class="r">12</td><td class="r">40만</td><td class="r">3.3만</td><td class="r">4</td><td class="r">800만</td><td class="r b" style="color:var(--pos)">2,000%</td></tr>
+<tr><td><span class="dt" style="background:#f59e0b"></span>유튜브</td><td class="r">8</td><td class="r">50만</td><td class="r">6.3만</td><td class="r">2</td><td class="r">400만</td><td class="r b" style="color:var(--pos)">800%</td></tr>
+<tr><td><span class="dt" style="background:#8b5cf6"></span>카카오</td><td class="r">5</td><td class="r">20만</td><td class="r">4.0만</td><td class="r">1</td><td class="r">200만</td><td class="r b" style="color:var(--pos)">1,000%</td></tr>
+<tr><td><span class="dt" style="background:#71717a"></span>맘카페</td><td class="r">4</td><td class="r">10만</td><td class="r">2.5만</td><td class="r">1</td><td class="r">220만</td><td class="r b" style="color:var(--pos)">2,200%</td></tr>
+<tr style="background:var(--sfh)"><td class="b">합계</td><td class="r b">47</td><td class="r b">300만</td><td class="r b">6.4만</td><td class="r b">14</td><td class="r b">2,820만</td><td class="r b" style="color:var(--pos)">940%</td></tr>
+</tbody></table></section>
+
+<section class="card ins an d5"><h4>💡 인사이트</h4><p>블로그 SEO & 맘카페 CPA 최저 (3.3만, 2.5만) — 저비용 고효율 확인. 네이버 SA CPA 10만원은 롱테일 최적화로 8만원 이하 가능. 다음 달 블로그+SA 비중 확대 추천.</p></section>
+</div>
+</div>
+
+<div class="ft2">THAT'S ONE · Marketing Proposal · 2026.04</div>
+</main>
+
+<script>
+function toggleMenu(){document.getElementById('dd').classList.toggle('open')}
+document.addEventListener('click',function(e){if(!e.target.closest('.mn'))document.getElementById('dd').classList.remove('open')});
+
+var ct='dark';
+function applyTheme(t){document.documentElement.className='theme-'+t;document.getElementById('ti').textContent=t==='dark'?'🌙':'☀️';document.getElementById('tl').textContent=t==='dark'?'다크':'라이트';ct=t;if(document.getElementById('page-dashboard').classList.contains('active'))buildCharts()}
+function cycleTheme(){applyTheme(ct==='dark'?'light':'dark')}
+
+function showTab(name){
+document.querySelectorAll('.tab-page').forEach(function(p){p.classList.remove('active')});
+document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+document.getElementById('page-'+name).classList.add('active');
+event.target.classList.add('active');
+window.scrollTo(0,0);
+if(name==='dashboard')setTimeout(buildCharts,100);
+}
+
+var ci={};
+function buildCharts(){
+if(typeof Chart==='undefined')return;
+var dk=ct==='dark',tc=dk?'#a1a1aa':'#52525b',gc=dk?'rgba(255,255,255,.06)':'rgba(0,0,0,.06)';
+var col={i:dk?'#818cf8':'#4f46e5',g:dk?'#34d399':'#059669',y:dk?'#fbbf24':'#d97706',p:dk?'#a78bfa':'#7c3aed',x:dk?'#71717a':'#a1a1aa',bg:dk?'#18181b':'#fff'};
+Object.keys(ci).forEach(function(k){if(ci[k]){ci[k].destroy();delete ci[k]}});
+
+ci.c1=new Chart(document.getElementById('c1'),{type:'line',data:{labels:['W1','W2','W3','W4'],datasets:[{label:'마케팅',data:[8,12,14,13],borderColor:col.i,backgroundColor:col.i+'20',borderWidth:2.5,fill:true,tension:.35,pointRadius:5,pointBackgroundColor:col.i,pointBorderColor:col.bg,pointBorderWidth:2},{label:'소개',data:[5,7,8,6],borderColor:col.x,borderWidth:2,borderDash:[5,4],tension:.35,pointRadius:4,pointBackgroundColor:col.x,pointBorderColor:col.bg,pointBorderWidth:2,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{enabled:true},legend:{position:'bottom',labels:{color:tc,font:{size:11,family:'Noto Sans KR'},padding:14,usePointStyle:true}}},scales:{x:{ticks:{color:tc,font:{size:10}},grid:{display:false}},y:{beginAtZero:true,ticks:{color:tc,font:{size:10},stepSize:5},grid:{color:gc}}}}});
+
+ci.c2=new Chart(document.getElementById('c2'),{type:'doughnut',data:{labels:['SA (18)','블로그 (12)','유튜브 (8)','카카오 (5)','맘카페 (4)'],datasets:[{data:[18,12,8,5,4],backgroundColor:[col.i,col.g,col.y,col.p,col.x],borderWidth:0,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{tooltip:{enabled:true},legend:{position:'bottom',labels:{color:tc,font:{size:11,family:'Noto Sans KR'},padding:10,usePointStyle:true,pointStyle:'circle'}}}}});
+
+ci.c3=new Chart(document.getElementById('c3'),{type:'bar',data:{labels:['맘카페','블로그','카카오','유튜브','SA'],datasets:[{data:[2.5,3.3,4.0,6.3,10.0],backgroundColor:[col.x+'cc',col.g+'cc',col.p+'cc',col.y+'cc',col.i+'cc'],borderRadius:5,barThickness:24}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{tooltip:{enabled:true,callbacks:{label:function(c){return ' '+c.parsed.x+'만원'}}},legend:{display:false}},scales:{x:{beginAtZero:true,max:12,ticks:{color:tc,font:{size:10},callback:function(v){return v+'만'}},grid:{color:gc}},y:{ticks:{color:tc,font:{size:11,family:'Noto Sans KR'}},grid:{display:false}}}}});
+}
+
+applyTheme('dark');
+</script>
+</body>
+</html>
